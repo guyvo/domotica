@@ -22,8 +22,10 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # CONFIG += mobility
 # MOBILITY +=
 
-SOURCES += main.cpp mainwindow.cpp
-HEADERS += mainwindow.h
+SOURCES += main.cpp mainwindow.cpp \
+    TriosModel.c
+HEADERS += mainwindow.h \
+    TriosModel.h
 FORMS += mainwindow.ui
 
 # Please do not modify the following two lines. Required for deployment.
