@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "TriosModel.h"
 
 #include <QtCore/QCoreApplication>
 
@@ -7,6 +8,26 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    TriosInitBuffer();
+    TriosSetEthernet("192.168.1.10",6969);
+    TriosSendGetBuffer();
+
+    for (int i = 0 ; i < 24 ; i++){
+
+
+        QTableWidgetItem * item = new QTableWidgetItem();
+        item->setText(gpCLightNames[i]);
+        ui->tableWidget->setItem(i,0,item);
+
+        QTableWidgetItem * val = new QTableWidgetItem();
+        QString s;
+
+        val->setText(s.setNum(gTriosLights[i].lights.value));
+        ui->tableWidget->setItem(i,1,val);
+
+    }
+
 }
 
 MainWindow::~MainWindow()
